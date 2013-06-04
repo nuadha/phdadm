@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<div id="user_info">
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @role %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
+</div>
+<div id="progress_plan">
+	
+<p>
+	<b>Progress Plan:</b>
+</p>
+<table border="1">
+  <tr>
+  	<th>PhD Name</th>
+    <th>Milestone</th>
+    <th>Plandate</th>
+    <th>Completedate</th>
+    <th>PDF</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <%= render(@user.progresses) %>
+</table>
+<br />
+<%= link_to 'New Progress Plan', new_progress_path %>
+</div>

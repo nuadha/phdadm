@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Phd:</b>
+  <%= @phd_supervisor_relation.phd_id %>
+</p>
+
+<p>
+  <b>Supervisor:</b>
+  <%= @phd_supervisor_relation.supervisor_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_phd_supervisor_relation_path(@phd_supervisor_relation) %> |
+<%= link_to 'Back', phd_supervisor_relations_path %>

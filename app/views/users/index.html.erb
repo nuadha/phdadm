@@ -1,0 +1,32 @@
+<h1>Listing users</h1>
+
+<table border="1">
+  <tr>
+  	<th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Hashed password</th>
+    <th>Role_id</th>
+    <th>Role</th>
+    <th>Supervisor</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+  	<td><%= user.id %></td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.hashed_password %></td>
+    <td><%= user.role_id %></td>
+    <td><%= Role.find(user.role_id).role_name %></td>
+  	<td><%= "TODO: Relate Supervisor and PhD Student \n TODO: Display supervisor name" if Role.find(user.role_id).role_name == "PhD Student" %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>

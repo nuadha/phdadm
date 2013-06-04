@@ -1,0 +1,25 @@
+<h1>Listing phd_supervisor_relations</h1>
+
+<table>
+  <tr>
+    <th>Phd</th>
+    <th>Supervisor</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @phd_supervisor_relations.each do |phd_supervisor_relation| %>
+  <tr>
+    <td><%= phd_supervisor_relation.phd_id %></td>
+    <td><%= phd_supervisor_relation.supervisor_id %></td>
+    <td><%= link_to 'Show', phd_supervisor_relation %></td>
+    <td><%= link_to 'Edit', edit_phd_supervisor_relation_path(phd_supervisor_relation) %></td>
+    <td><%= link_to 'Destroy', phd_supervisor_relation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Phd supervisor relation', new_phd_supervisor_relation_path %>

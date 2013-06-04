@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  milestone: MyString
+  plandate: 2013-03-21
+  completedate: 2013-03-21
+  name: MyString
+  content_type: MyString
+  data: 
+
+two:
+  milestone: MyString
+  plandate: 2013-03-21
+  completedate: 2013-03-21
+  name: MyString
+  content_type: MyString
+  data: 

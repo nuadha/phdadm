@@ -1,0 +1,40 @@
+<%= form_for(@progress) do |f| %>
+  <% if @progress.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@progress.errors.count, "error") %> prohibited this progress from being saved:</h2>
+
+      <ul>
+      <% @progress.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="dropdownmenu">
+	<%= f.label :user_id %><br />
+  	<%= f.collection_select :user_id, User.where(:role_id => 1), :id, :name, :prompt => 'Select Student' %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label :milestone %><br />
+    <%= f.text_field :milestone %>
+  </div>
+  
+  <div class="field">
+  	<%= f.label 'Select file'%><br />
+  	<%= f.file_field("uploaded_pdf") %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :plandate %><br />
+    <%= f.date_select :plandate %>
+  </div>
+  <div class="field">
+    <%= f.label :completedate %><br />
+    <%= f.date_select :completedate %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Submit Progress Plan' %>
+  </div>
+<% end %>

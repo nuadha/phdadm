@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>PhD Student Name:</b>
+  <%= User.find(@progress.user_id).name %>
+</p>
+
+<p>
+  <b>Milestone:</b>
+  <%= @progress.milestone %>
+</p>
+
+<p>
+  <b>Plandate:</b>
+  <%= @progress.plandate %>
+</p>
+
+<p>
+  <b>Completedate:</b>
+  <%= @progress.completedate %>
+</p>
+
+
+<%= link_to 'Edit', edit_progress_path(@progress) %> |
+<%= link_to 'Back', user_path(@user) %>

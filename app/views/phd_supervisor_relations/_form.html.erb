@@ -1,0 +1,25 @@
+<%= form_for(@phd_supervisor_relation) do |f| %>
+  <% if @phd_supervisor_relation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@phd_supervisor_relation.errors.count, "error") %> prohibited this phd_supervisor_relation from being saved:</h2>
+
+      <ul>
+      <% @phd_supervisor_relation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :phd_id %><br />
+    <%= f.number_field :phd_id %>
+  </div>
+  <div class="field">
+    <%= f.label :supervisor_id %><br />
+    <%= f.number_field :supervisor_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

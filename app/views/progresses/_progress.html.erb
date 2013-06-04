@@ -1,0 +1,10 @@
+  <tr>
+  	<td><%= User.find(progress.user_id).name %></td>
+    <td><%= progress.milestone %></td>
+    <td><%= progress.plandate %></td>
+    <td><%= progress.completedate %></td>
+    <td><%= link_to_if(!progress.name.nil?, progress.name, { :controller => "pdf", :action => "show", :progress_id => progress.id }) %></td>
+    <td><%= link_to 'Show', progress %></td>
+    <td><%= link_to 'Edit', edit_progress_path(progress) %></td>
+    <td><%= link_to 'Destroy', progress, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>

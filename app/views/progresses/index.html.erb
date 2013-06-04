@@ -1,0 +1,20 @@
+<h1>Listing progress plans</h1>
+
+<table border="1">
+  <tr>
+  	<th>PhD Student Name</th>
+    <th>Milestone</th>
+    <th>Plandate</th>
+    <th>Completedate</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+	
+	<%= render @progresses %>
+
+</table>
+
+<br />
+
+<%= link_to 'New Progress Plan', new_progress_path %>
