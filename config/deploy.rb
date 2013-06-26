@@ -1,5 +1,5 @@
-#$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
-#require 'rvm/capistrano'  # Add RVM integration
+$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
+require 'rvm/capistrano'  # Add RVM integration
 require 'bundler/capistrano'  # Add Bundler integration
 load 'deploy/assets'  # only for rails 3.1 apps, this makes sure our assets are precompiled.
 
