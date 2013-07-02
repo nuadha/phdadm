@@ -19,7 +19,7 @@ set :branch, "master"
 set :rvm_type, :system
 set :rvm_path, '/usr/local/rvm'
 set :user, "deploy"
-set :deploy_to, "/var/www/#{application}"
+set :deploy_to, "/srv/projects/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
