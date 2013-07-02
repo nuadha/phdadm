@@ -29,12 +29,12 @@
 	  
 	  <div class="dropdownmenu">
 	  	<%= f.label :role %><br />
-  		<%= f.collection_select :role_id, Role.all, :id, :role_name, :prompt => 'Select Role' %>
+  		<%= f.collection_select :role_id, @roles, :id, :role_name, :prompt => 'Select Role' %>
   	  </div>
   	  <br />
       <div class="dropdownmenu">
 	  	<%= f.label :supervisor %><br />
-  		<%= f.collection_select :supervisor, User.where(:role_id => 2), :id, :name, :prompt => 'Select Supervisor' %>
+  		<%= f.collection_select :supervisor, @supervisors, :id, :name, :prompt => 'Select Supervisor' %>
   	  </div>
 	  <br />
 	  <div class="field">

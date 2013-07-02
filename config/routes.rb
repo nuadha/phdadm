@@ -1,4 +1,10 @@
 Phdadm::Application.routes.draw do
+  resources :authors
+
+
+  resources :articles
+
+
   get "pdf/show"
 
 
@@ -17,7 +23,7 @@ Phdadm::Application.routes.draw do
   resources :progresses
 
 
-  root :to => 'users#index'
+  # root :to => 'users#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
