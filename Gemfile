@@ -32,13 +32,21 @@ gem 'jquery-rails'
 # Use unicorn as the app server
 # gem 'unicorn'
 
+group :deploy do
+# Use this command to not install these gems
+# Bundle install --without deploy
+
+  
 # Deploy with Capistrano
-gem 'rvm-capistrano'
-gem 'capistrano'
+  gem 'rvm-capistrano'
+  gem 'capistrano'
+  gem 'therubyracer'
+end
+
 
 # To use debugger
 # gem 'debugger'
 
-gem 'therubyracer'
+
 
 

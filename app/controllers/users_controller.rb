@@ -28,6 +28,8 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
+    @roles = Role.all
+    @supervisors = User.where(:role_id => Role.where(:role_name => 'Supervisor'))
 
     respond_to do |format|
       format.html # new.html.erb
