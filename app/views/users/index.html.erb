@@ -19,7 +19,11 @@
     <td><%= user.hashed_password %></td>
     <td><%= user.role_id %></td>
     <td><%= Role.find(user.role_id).role_name %></td>
-  	<td><%= "TODO: Relate Supervisor and PhD Student \n TODO: Display supervisor name" if Role.find(user.role_id).role_name == "PhD Student" %></td>
+  	<td>
+  		<% if Role.find(user.role_id).role_name == "PhD Student" %>
+  			<% "TODO: Relate Supervisor and PhD Student TODO: Display supervisor name" %>
+  		<% end %>
+  	</td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

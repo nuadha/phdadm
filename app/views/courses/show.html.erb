@@ -7,7 +7,8 @@
 
 <p>
   <b>Link:</b>
-  <%= @course.link %>
+  <%- # @course.link -%>
+  <%= link_to @course.link, @course.link %>
 </p>
 
 <p>
