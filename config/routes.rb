@@ -1,4 +1,10 @@
 Phdadm::Application.routes.draw do
+  resources :enrollments
+
+
+  resources :courses
+
+
   resources :authors
 
 

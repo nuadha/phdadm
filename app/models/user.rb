@@ -6,7 +6,11 @@ class User < ActiveRecord::Base
   has_many :phds, :class_name => "PhdSupervisorRelation"
   belongs_to :role
   has_many :progresses
+  has_many :authors
   has_many :articles, through: :authors
+  has_many :enrollments
+  has_many :courses, through: :enrollments
+  
   
   validates :role_id, :email, :name, :password, :password_confirmation, :presence => true
   validates :email, :uniqueness => true, :format => { :with => %r{\w+(\.\w+)*@\w+(\.\w+)+$},

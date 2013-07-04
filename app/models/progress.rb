@@ -5,7 +5,7 @@ class Progress < ActiveRecord::Base
   belongs_to :user
   
   validates :content_type, :format => {:with => %r{\w+.pdf},
-                                       :message => "--- you can only upload pdfs"}
+                                       :message => "--- you can only upload pdf files"}
   
   validates :user_id, :milestone, :plandate, :presence => true
   
