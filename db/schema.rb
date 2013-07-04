@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20130626121709) do
     t.date     "completedate"
     t.string   "name"
     t.string   "content_type"
-    t.binary   "data",         :limit => 10485760
+    t.binary   "data",         :limit => 16777215
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
   end
