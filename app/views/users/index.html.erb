@@ -8,7 +8,7 @@
     <th>Hashed password</th>
     <th>Role_id</th>
     <th>Role</th>
-    <th>Supervisor</th>
+    <th>Supervisor/Supervising</th>
   </tr>
 
 <% @users.each do |user| %>
@@ -18,10 +18,14 @@
     <td><%= user.email %></td>
     <td><%= user.hashed_password %></td>
     <td><%= user.role_id %></td>
-    <td><%= Role.find(user.role_id).role_name %></td>
+    <td><%= user.role %></td>
   	<td>
-  		<% if Role.find(user.role_id).role_name == "PhD Student" %>
-  			<% "TODO: Relate Supervisor and PhD Student TODO: Display supervisor name" %>
+  		<% if user.role == "PhD Student" %>
+  			<%= user.supervisor_name %>  
+  		<% else %>
+  			<% user.phd_names.each do |name| %>
+  				<%= name %><br />
+  			<% end %>
   		<% end %>
   	</td>
     <td><%= link_to 'Show', user %></td>

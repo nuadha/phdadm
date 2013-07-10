@@ -40,8 +40,12 @@ class PhdSupervisorRelationsController < ApplicationController
   # POST /phd_supervisor_relations
   # POST /phd_supervisor_relations.json
   def create
+    # This is auto generated behavior
     @phd_supervisor_relation = PhdSupervisorRelation.new(params[:phd_supervisor_relation])
 
+    # phd = User.find(params[:phd_id])
+    # @phd_supervisor_relation = phd.supervisor_relations.build(:supervisor_id => params[:supervisor_id])
+    
     respond_to do |format|
       if @phd_supervisor_relation.save
         format.html { redirect_to @phd_supervisor_relation, :notice => 'Phd supervisor relation was successfully created.' }

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @users }
@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     set_current_user(params[:id])
-    @role = "PhD Student"
     
     respond_to do |format|
       format.html # show.html.erb
@@ -40,15 +39,24 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @roles = Role.all
+    @supervisors = User.where(:role_id => Role.where(:role_name => 'Supervisor'))
+    
   end
 
   # POST /users
   # POST /users.json
   def create
-    @supervisor_id = params[:user].delete("supervisor")
     @user = User.new(params[:user])
-    # @user.supervisor.create(@supervisor_id)
-
+    @roles = Role.all
+    @supervisors = User.where(:role_id => Role.where(:role_name => 'Supervisor'))
+    
+    if params[:phd_supervisor_relation][:supervisor_id] != ""
+      @user.supervisor_relations.build(:supervisor_id => params[:phd_supervisor_relation][:supervisor_id])
+    end
+    # PhdSupervisorRelation.create(:phd_id => @user.id, :supervisor_id => @supervisor_id)
+    
+    
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, :notice => 'User was successfully created.' }
@@ -63,8 +71,16 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @supervisor_id = params[:user].delete("supervisor")
     @user = User.find(params[:id])
+    @roles = Role.all
+    @supervisors = User.where(:role_id => Role.where(:role_name => 'Supervisor'))
+    
+    if !@user.supervisor_relations.empty?
+      @user.supervisor_relations.first.destroy
+    end
+    if params[:phd_supervisor_relation][:supervisor_id] != ""
+      @user.supervisor_relations.build(:supervisor_id => params[:phd_supervisor_relation][:supervisor_id])
+    end
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -81,6 +97,16 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
+    case @user.role_id
+      when 1    # PhD Student
+        if !@user.supervisor_relations.empty?
+          @user.supervisor_relations.first.destroy
+        end 
+      else      # Supervisor
+        while !@user.phd_relations.empty?
+          @user.phd_relations.first.destroy  
+        end
+      end
     @user.destroy
 
     respond_to do |format|

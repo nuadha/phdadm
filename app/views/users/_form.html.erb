@@ -27,16 +27,18 @@
 	    <%= f.text_field :email %>
 	  </div>
 	  
-	  <div class="dropdownmenu">
+	  <div class="dropdownmenu" id="role">
 	  	<%= f.label :role %><br />
   		<%= f.collection_select :role_id, @roles, :id, :role_name, :prompt => 'Select Role' %>
+  		<br /><br />
   	  </div>
-  	  <br />
-      <div class="dropdownmenu">
+  	  
+      <div class="dropdownmenu" id="supervisor">
 	  	<%= f.label :supervisor %><br />
-  		<%= f.collection_select :supervisor, @supervisors, :id, :name, :prompt => 'Select Supervisor' %>
+  		<%= collection_select :phd_supervisor_relation, :supervisor_id, @supervisors, :id, :name, :prompt => 'Select Supervisor' %>
+  		<br /><br />
   	  </div>
-	  <br />
+	  
 	  <div class="field">
 	    <%= f.label :password, 'Password' %><br />
 	    <%= f.password_field :password %>
@@ -54,3 +56,25 @@
 	  </fieldset>
 	<% end %>
 </div>
+
+<%- # Hides the supervisor box if it is not a phd student -%>
+<script>
+  $(document).ready(function(){
+     if($('#user_role_id').val() != 1){
+        $("#supervisor").css('display','none')
+     }
+     else{
+        $("#supervisor").css('display','block')
+     }
+
+     $('#user_role_id').change(function(){
+        if($(this).val() != 1){
+          $("#supervisor").css('display','none')
+        }
+        else{
+          $("#supervisor").css('display','block')
+        }
+     })
+  });
+
+</script>

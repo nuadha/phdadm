@@ -13,12 +13,29 @@
 
 <p>
   <b>Role:</b>
-  <%= @role %>
+  <%= @user.role %>
 </p>
+
+<% if @user.role == "PhD Student" %>
+<p>
+  <b>Supervisor:</b>
+  <%= @user.supervisor_name %>
+</p>
+
+<% else %>
+<p>
+  <b>Supervising:</b>
+  <% @user.phd_names.each do |name| %>
+  	<li><%= name %></li>
+  <% end %>
+</p>
+<% end %>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 
+<% if @user.role == "PhD Student" %>
 </div>
 <div id="progress_plan">
 	
@@ -26,18 +43,9 @@
 	<b>Progress Plan:</b>
 </p>
 <table border="1">
-  <tr>
-  	<th>PhD Name</th>
-    <th>Milestone</th>
-    <th>Plandate</th>
-    <th>Completedate</th>
-    <th>PDF</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
   <%= render(@user.progresses) %>
 </table>
 <br />
 <%= link_to 'New Progress Plan', new_progress_path %>
 </div>
+<% end %>
