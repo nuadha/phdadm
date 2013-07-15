@@ -4,16 +4,16 @@ class User < ActiveRecord::Base
   default_scope :order => 'name'
   
   # One supervisor has a relation to many phd's
-  has_many :phd_relations, :class_name => "PhdSupervisorRelation", :foreign_key => "supervisor_id"
+  has_many :phd_relations, :class_name => "PhdSupervisorRelation", :foreign_key => "supervisor_id", :dependent => :destroy
   has_many :phds, :through => :phd_relations, :source => 'supervisor'
   # One student has a relation to one supervisor
-  has_many :supervisor_relations, :class_name => "PhdSupervisorRelation", :foreign_key => "phd_id"
+  has_many :supervisor_relations, :class_name => "PhdSupervisorRelation", :foreign_key => "phd_id", :dependent => :destroy
   has_many :supervisor, :through => :supervisor_relations, :source => 'phd'
   
-  has_many :progresses
-  has_many :authors
+  has_many :progresses, :dependent => :destroy
+  has_many :authors, :dependent => :destroy
   has_many :articles, through: :authors
-  has_many :enrollments
+  has_many :enrollments, :dependent => :destroy
   has_many :courses, through: :enrollments
   
   belongs_to :role

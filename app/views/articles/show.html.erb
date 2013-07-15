@@ -8,7 +8,7 @@
 <p>
   <b>Link:</b>
   <%- # @article.link -%>
-  <%= link_to @article.link, @article.link %>
+  <%= link_to @article.link, url_with_protocol(@article.link) %>
 </p>
 
 

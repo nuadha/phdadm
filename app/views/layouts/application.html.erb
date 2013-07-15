@@ -13,20 +13,13 @@
 	</div>
 	<div id="columns">
 		<div id="side">
-			<% if false %>
-			<p>This is a multiline comment</p>
-			<%-# commented line -%>
-			<div id="cart">
-				<%= render @cart %>
-			</div>
-			<% end %>
 			
 			<% time = Time.now %>
 			<%= time.to_formatted_s(:long)%>
 			<br /><br />
 			<%= link_to "Articles", articles_path %><br />
-			<%= link_to "Authors", authors_path %><br />
-			<%= link_to "Cources", courses_path %><br />
+			<%= link_to "Authorships", authors_path %><br />
+			<%= link_to "Courses", courses_path %><br />
 			<%= link_to "Enrollments", enrollments_path %><br />
 			<%= link_to "Progresses", progresses_path %><br />
 			<%= link_to "PhD Supervisor Relations", phd_supervisor_relations_path %><br />

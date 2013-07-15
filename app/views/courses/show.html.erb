@@ -7,8 +7,7 @@
 
 <p>
   <b>Link:</b>
-  <%- # @course.link -%>
-  <%= link_to @course.link, @course.link %>
+  <%= link_to @course.link, url_with_protocol(@course.link) %>
 </p>
 
 <p>

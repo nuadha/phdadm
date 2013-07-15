@@ -2,22 +2,15 @@
 
 <table>
   <tr>
-    <th>User</th>
-    <th>Article</th>
-    <th></th>
-    <th></th>
+    <th>User Id</th>
+    <th>User Name</th>
+    <th>Article Id</th>
+    <th>Article Name</th>
     <th></th>
   </tr>
-
-<% @authors.each do |author| %>
-  <tr>
-    <td><%= author.user_id %></td>
-    <td><%= author.article_id %></td>
-    <td><%= link_to 'Show', author %></td>
-    <td><%= link_to 'Edit', edit_author_path(author) %></td>
-    <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  
+  <%= render @authors %>
+  
 </table>
 
 <br />

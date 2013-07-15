@@ -97,16 +97,6 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
-    case @user.role_id
-      when 1    # PhD Student
-        if !@user.supervisor_relations.empty?
-          @user.supervisor_relations.first.destroy
-        end 
-      else      # Supervisor
-        while !@user.phd_relations.empty?
-          @user.phd_relations.first.destroy  
-        end
-      end
     @user.destroy
 
     respond_to do |format|

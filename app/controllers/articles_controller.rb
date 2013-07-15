@@ -36,13 +36,18 @@ class ArticlesController < ApplicationController
   # GET /articles/1/edit
   def edit
     @article = Article.find(params[:id])
+    @phds = User.where(:role_id => Role.where(:role_name => "PhD Student"))
   end
 
   # POST /articles
   # POST /articles.json
   def create
     @article = Article.new(params[:article])
-
+    @phds = User.where(:role_id => Role.where(:role_name => "PhD Student"))
+    if params[:author][:author_id] != ""
+      @article.authors.build(:user_id => params[:author][:author_id])
+    end
+    
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -58,6 +63,9 @@ class ArticlesController < ApplicationController
   # PUT /articles/1.json
   def update
     @article = Article.find(params[:id])
+    if params[:author][:author_id] != ""
+      @article.authors.build(:user_id => params[:author][:author_id])
+    end
 
     respond_to do |format|
       if @article.update_attributes(params[:article])

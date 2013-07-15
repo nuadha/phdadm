@@ -1,0 +1,9 @@
+  <tr>
+    <td><%= author.user_id %></td>
+    <td><%= User.find(author.user_id).name %></td>
+    <td><%= author.article_id %></td>
+    <td><%= Article.find(author.article_id).title %></td>
+    <td><%= link_to 'Show', author %></td>
+    <td><%= link_to 'Edit', edit_author_path(author) %></td>
+    <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>

@@ -20,6 +20,12 @@
     <%= f.text_field :link %>
   </div>
   
+  <div class="dropdownmenu" id="author">
+  	<%= f.label :author %><br />
+	<%= collection_select :author, :author_id, @phds, :id, :name, :prompt => 'Select Author' %>
+	<br /><br />
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

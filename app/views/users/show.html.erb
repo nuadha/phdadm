@@ -43,9 +43,37 @@
 	<b>Progress Plan:</b>
 </p>
 <table border="1">
+  <tr>
+  	<th>PhD Name</th>
+    <th>Milestone</th>
+    <th>Plandate</th>
+    <th>Completedate</th>
+    <th>PDF</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
   <%= render(@user.progresses) %>
 </table>
 <br />
 <%= link_to 'New Progress Plan', new_progress_path %>
+</div>
+<div id="authorships">
+	
+<p>
+	<b>Authorships:</b>
+</p>
+<table border="1">
+  <tr>
+    <th>User Id</th>
+    <th>User Name</th>
+    <th>Article Id</th>
+    <th>Article Name</th>
+    <th></th>
+  </tr>
+  <%= render( @user.authors ) %>
+</table>
+<br />
+<%= link_to 'New Authorship', new_article_path %>
 </div>
 <% end %>
