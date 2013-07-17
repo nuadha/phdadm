@@ -10,6 +10,16 @@
   <%= @enrollment.user_id %>
 </p>
 
+<p>
+  <b>Enrollment Date:</b>
+  <%= @enrollment.enrollment_date %>
+</p>
+
+<p>
+  <b>Completion Date:</b>
+  <%= @enrollment.completion_date %>
+</p>
+
 
 <%= link_to 'Edit', edit_enrollment_path(@enrollment) %> |
 <%= link_to 'Back', enrollments_path %>

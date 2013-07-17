@@ -9,13 +9,19 @@ class User < ActiveRecord::Base
   # One student has a relation to one supervisor
   has_many :supervisor_relations, :class_name => "PhdSupervisorRelation", :foreign_key => "phd_id", :dependent => :destroy
   has_many :supervisor, :through => :supervisor_relations, :source => 'phd'
-  
+  # One student has many progress plans
   has_many :progresses, :dependent => :destroy
+  # One student has many authorships
   has_many :authors, :dependent => :destroy
   has_many :articles, through: :authors
+  # One student has many enrollments
   has_many :enrollments, :dependent => :destroy
   has_many :courses, through: :enrollments
-  
+  # One student has many supervisor progress declarations
+  has_many :phd_spds, :class_name => "SupervisorProgressDeclaration", :foreign_key => "phd_id", :source => 'phd', :dependent => :destroy
+  # One supervisor has many supervisor progress declarations
+  has_many :supervisor_spds, :class_name => "SupervisorProgressDeclaration", :foreign_key => "supervisor_id", :source => 'supervisor', :dependent => :destroy
+  # One user belongs to one role
   belongs_to :role
   
   validates :role_id, :email, :name, :password, :password_confirmation, :presence => true

@@ -19,6 +19,15 @@
     <%= f.label :user_id %><br />
     <%= f.number_field :user_id %>
   </div>
+  <div class="field">
+    <%= f.label :enrollment_date %><br />
+    <%= f.date_select :enrollment_date %>
+  </div>
+  <div class="field">
+    <%= f.label :completion_date %><br />
+    <%= f.date_select :completion_date %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @supervisor_progress_declaration.date %>
+</p>
+
+<p>
+  <b>Scientific progress:</b>
+  <%= @supervisor_progress_declaration.scientific_progress %>
+</p>
+
+<p>
+  <b>Following student plan:</b>
+  <%= @supervisor_progress_declaration.following_student_plan %>
+</p>
+
+<p>
+  <b>Phd:</b>
+  <%= @phd %>
+</p>
+
+<p>
+  <b>Supervisor:</b>
+  <%= @supervisor %>
+</p>
+
+
+<%= link_to 'Edit', edit_supervisor_progress_declaration_path(@supervisor_progress_declaration) %> |
+<%= link_to 'Back', supervisor_progress_declarations_path %>

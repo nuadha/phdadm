@@ -1,0 +1,39 @@
+<%= form_for(@supervisor_progress_declaration) do |f| %>
+  <% if @supervisor_progress_declaration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@supervisor_progress_declaration.errors.count, "error") %> prohibited this supervisor_progress_declaration from being saved:</h2>
+
+      <ul>
+      <% @supervisor_progress_declaration.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :scientific_progress %><br />
+    <%= f.check_box :scientific_progress %>
+  </div>
+  <div class="field">
+    <%= f.label :following_student_plan %><br />
+    <%= f.check_box :following_student_plan %>
+  </div>
+  <div class="dropdownmenu" id="phd">
+    <%= f.label :phd %><br />
+  	<%= f.collection_select :phd_id, @phds, :id, :name, :prompt => 'Select PhD Student' %>
+  	<br /><br />
+  </div>
+  <div class="dropdownmenu" id="supervisor">
+	<%= f.label :supervisor %><br />
+  	<%= f.collection_select :supervisor_id, @supervisors, :id, :name, :prompt => 'Select Supervisor' %>
+  	<br /><br />
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

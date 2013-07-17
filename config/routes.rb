@@ -1,4 +1,7 @@
 Phdadm::Application.routes.draw do
+  resources :supervisor_progress_declarations
+
+
   resources :enrollments
 
 

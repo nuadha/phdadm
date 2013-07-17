@@ -4,7 +4,8 @@
   <tr>
     <th>Course</th>
     <th>User</th>
-    <th></th>
+    <th>Enrollment Date</th>
+    <th>Completion Data</th>
     <th></th>
     <th></th>
   </tr>
@@ -13,6 +14,8 @@
   <tr>
     <td><%= enrollment.course_id %></td>
     <td><%= enrollment.user_id %></td>
+    <td><%= enrollment.enrollment_date %></td>
+    <td><%= enrollment.completion_date %></td>
     <td><%= link_to 'Show', enrollment %></td>
     <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
     <td><%= link_to 'Destroy', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
